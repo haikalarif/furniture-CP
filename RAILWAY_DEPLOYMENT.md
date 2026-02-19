@@ -43,47 +43,65 @@ FILESYSTEM_DISK=public
 3. Select "Deploy from GitHub repo"
 4. Choose your repository
 
-### 2. Add MySQL Database
+### 2. Add MySQL Database FIRST (Important!)
+**IMPORTANT: Add database BEFORE deploying Laravel service**
+
 1. In your project, click "New"
 2. Select "Database" → "Add MySQL"
-3. Railway will automatically create database and provide credentials
+3. Wait for MySQL to be fully provisioned (check status)
+4. Railway will automatically create database and provide credentials
 
 ### 3. Link Database to Laravel Service
 1. Go to your Laravel service
 2. Click "Variables" tab
-3. Click "Add Reference" and select MySQL variables
-4. Railway will auto-populate DB_HOST, DB_PORT, etc.
+3. Click "Add Reference" and select MySQL variables:
+   - Reference `MYSQLHOST` as `DB_HOST`
+   - Reference `MYSQLPORT` as `DB_PORT`
+   - Reference `MYSQLDATABASE` as `DB_DATABASE`
+   - Reference `MYSQLUSER` as `DB_USERNAME`
+   - Reference `MYSQLPASSWORD` as `DB_PASSWORD`
+4. Railway will auto-populate these values
 
 ### 4. Add Additional Environment Variables
 Add these manually:
-- APP_NAME
-- APP_ENV=production
-- APP_KEY (generate with `php artisan key:generate --show`)
-- APP_DEBUG=false
-- APP_URL (your Railway URL)
-- SESSION_DRIVER=file
-- QUEUE_CONNECTION=sync
-- LOG_CHANNEL=stack
-- LOG_LEVEL=error
-- FILESYSTEM_DISK=public
+- `APP_NAME` = "KalKayu Living"
+- `APP_ENV` = production
+- `APP_KEY` = (generate with `php artisan key:generate --show`)
+- `APP_DEBUG` = false
+- `APP_URL` = (your Railway URL, e.g., https://your-app.railway.app)
+- `DB_CONNECTION` = mysql
+- `SESSION_DRIVER` = file
+- `QUEUE_CONNECTION` = sync
+- `LOG_CHANNEL` = stack
+- `LOG_LEVEL` = error
+- `FILESYSTEM_DISK` = public
 
 ### 5. Deploy
-1. Railway will automatically deploy when you push to GitHub
-2. First deployment will run migrations automatically (via Procfile)
-3. Check logs for any errors
+1. Push your code to GitHub
+2. Railway will automatically deploy
+3. The `start.sh` script will:
+   - Wait for database to be ready
+   - Run migrations automatically
+   - Cache config, routes, and views
+   - Start the web server
+4. Check logs for any errors
 
-### 6. Storage Link (Important!)
-After first deployment, you need to create storage link.
+### 6. Verify Deployment
+1. Check Railway logs to ensure:
+   - "Database is ready!" message appears
+   - "Running migrations..." completes successfully
+   - "Starting web server..." appears
+2. Visit your Railway URL to test the application
 
-Option A - Via Railway CLI:
+### 7. Storage Link (Important!)
+After first successful deployment, run:
 ```bash
 railway run php artisan storage:link
 ```
 
-Option B - Via Railway Shell:
-1. Go to your service in Railway
-2. Click "Shell" tab
-3. Run: `php artisan storage:link`
+Or via Railway Shell:
+1. Go to your service → Shell tab
+2. Run: `php artisan storage:link`
 
 ## Post-Deployment
 

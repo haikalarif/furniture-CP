@@ -1,2 +1,1 @@
-web: php -d variables_order=EGPCS artisan serve --host=0.0.0.0 --port=$PORT
-release: php artisan migrate --force
+web: bash start.sh
