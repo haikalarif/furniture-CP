@@ -126,8 +126,19 @@
     </head>
     <body class="font-sans antialiased">
         @php
-            $heroTheme = isset($homePage) && $homePage ? ($homePage->hero_theme ?? 'elegant') : 'elegant';
-            $heroBackground = isset($homePage) && $homePage ? $homePage->hero_background : null;
+            // Safe fallback - tidak bergantung pada database
+            $heroTheme = 'elegant';
+            $heroBackground = null;
+            
+            // Coba ambil dari database jika tersedia
+            try {
+                if (isset($homePage) && $homePage) {
+                    $heroTheme = $homePage->hero_theme ?? 'elegant';
+                    $heroBackground = $homePage->hero_background;
+                }
+            } catch (\Exception $e) {
+                // Ignore error, use default
+            }
             
             $themes = [
                 'elegant' => [
@@ -146,7 +157,7 @@
         
         <!-- Background Layer -->
         <div class="auth-background">
-            @if($heroBackground)
+            @if($heroBackground && file_exists(public_path('storage/' . $heroBackground)))
                 <!-- Custom Background Image -->
                 <img src="{{ asset('storage/' . $heroBackground) }}" 
                      alt="Background"
