@@ -4,10 +4,12 @@
 
 ### 1. Pastikan File-file Ini Ada di Repository
 - ✅ `.php-version` (berisi: 8.2)
-- ✅ `nixpacks.json` (konfigurasi build)
+- ✅ `nixpacks.json` (konfigurasi build dengan Node.js)
 - ✅ `railway.json` (konfigurasi Railway)
 - ✅ `Procfile` (start command)
 - ✅ `composer.json` (require PHP ^8.2)
+- ✅ `package.json` (npm dependencies untuk Vite)
+- ✅ `vite.config.js` (Vite configuration)
 
 ### 2. Push ke GitHub
 ```bash
@@ -15,6 +17,12 @@ git add .
 git commit -m "Ready for Railway deployment"
 git push origin main
 ```
+
+**Note**: Railway akan otomatis:
+- Install PHP 8.2 dan Node.js 20
+- Run `composer install`
+- Run `npm install` dan `npm run build` (untuk compile assets)
+- Run migrations saat start
 
 ---
 
@@ -166,6 +174,16 @@ Website Anda sekarang live di Railway!
 3. Biasanya karena:
    - Composer dependencies error → cek `composer.json`
    - PHP version mismatch → pastikan `.php-version` ada
+   - NPM build error → cek `package.json` dan `vite.config.js`
+
+**Error: "npm: command not found"**
+- Pastikan `nixpacks.json` include `nodejs_20` dan `npm-9_x`
+- Redeploy setelah update nixpacks.json
+
+**Error: "npm run build failed"**
+- Cek apakah `package.json` ada
+- Cek apakah `vite.config.js` ada
+- Pastikan dependencies di `package.json` valid
 
 ### ❌ Migration Failed
 **Error: "Connection refused"**

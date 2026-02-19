@@ -3,12 +3,20 @@
     "setup": {
       "nixPkgs": [
         "php82",
-        "php82Packages.composer"
+        "php82Packages.composer",
+        "nodejs_20",
+        "npm-9_x"
       ]
     },
     "install": {
       "cmds": [
-        "composer install --no-dev --optimize-autoloader --no-interaction"
+        "composer install --no-dev --optimize-autoloader --no-interaction",
+        "npm install"
+      ]
+    },
+    "build": {
+      "cmds": [
+        "npm run build"
       ]
     }
   },
