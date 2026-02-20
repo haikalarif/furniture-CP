@@ -20,9 +20,19 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        // Force HTTPS in production
+        if (config('app.env') === 'production' || isset($_SERVER['HTTP_X_FORWARDED_PROTO'])) {
+            URL::forceScheme('https');
+        }
+
         // Share new contact messages count with admin layout
         view()->composer('layouts.admin', function ($view) {
-            $view->with('newMessagesCount', \App\Models\ContactMessage::new()->count());
+            try {
+                $newMessagesCount = \App\Models\ContactMessage::new()->count();
+                $view->with('newMessagesCount', $newMessagesCount);
+            } catch (\Exception $e) {
+                $view->with('newMessagesCount', 0);
+            }
         });
 
         // Share hero data with guest layout
@@ -34,9 +44,5 @@ class AppServiceProvider extends ServiceProvider
                 $view->with('homePage', null);
             }
         });
-
-        if (app()->environment('production')) {
-            URL::forceScheme('https');
-        }
     }
 }
