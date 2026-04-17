@@ -80,6 +80,13 @@
             </div>
 
             <div class="col-md-6">
+                <label class="form-label">Material</label>
+                <input type="text" name="material" value="{{ old('material') }}" 
+                       class="form-control"
+                       placeholder="Contoh: Kayu Jati">
+            </div>
+
+            <div class="col-md-6">
                 <label class="form-label">Tanggal Mulai Promo</label>
                 <input type="date" name="promo_start_date" value="{{ old('promo_start_date') }}" 
                        class="form-control @error('promo_start_date') is-invalid @enderror">
@@ -95,13 +102,6 @@
                 @error('promo_end_date')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
-            </div>
-
-            <div class="col-md-6">
-                <label class="form-label">Material</label>
-                <input type="text" name="material" value="{{ old('material') }}" 
-                       class="form-control"
-                       placeholder="Contoh: Kayu Jati">
             </div>
 
             <div class="col-md-6">
