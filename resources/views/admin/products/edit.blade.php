@@ -92,16 +92,6 @@
                 @enderror
             </div>
 
-            <div class="col-md-6">
-                <label class="form-label">Tanggal Mulai Promo</label>
-                <input type="date" name="promo_start_date" 
-                       value="{{ old('promo_start_date', $product->promo_start_date ? $product->promo_start_date->format('Y-m-d') : '') }}" 
-                       class="form-control @error('promo_start_date') is-invalid @enderror">
-                @error('promo_start_date')
-                    <div class="invalid-feedback">{{ $message }}</div>
-                @enderror
-            </div>
-
             <div class="col-md-4">
                 <label class="form-label">Tanggal Selesai Promo</label>
                 <input type="date" name="promo_end_date" 
