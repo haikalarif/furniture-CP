@@ -23,6 +23,13 @@
         "phpunit/phpunit": "^10.1",
         "spatie/laravel-ignition": "^2.0"
     },
+    "conflict": {
+        "symfony/symfony": "8.*",
+        "symfony/filesystem": "8.*",
+        "symfony/css-selector": "8.*",
+        "symfony/process": "8.*",
+        "symfony/console": "8.*"
+    },
     "autoload": {
         "psr-4": {
             "App\\": "app/",
