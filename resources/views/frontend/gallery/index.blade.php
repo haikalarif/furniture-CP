@@ -47,7 +47,7 @@
                     <div class="gallery-item position-relative overflow-hidden rounded shadow-sm" 
                          style="height: 280px; cursor: pointer;"
                          onclick="openGalleryModal({{ $index }})">
-                        <img src="{{ asset('storage/' . $gallery->image) }}" 
+                        <img src="{{ Storage::url($gallery->image) }}" 
                              alt="{{ $gallery->title }}"
                              class="w-100 h-100 object-fit-cover gallery-image">
                         
@@ -170,7 +170,7 @@
 const galleryData = [
     @foreach($galleries as $gallery)
     {
-        image: '{{ asset('storage/' . $gallery->image) }}',
+        image: '{{ Storage::url($gallery->image) }}',
         title: '{{ addslashes($gallery->title) }}',
         description: '{{ addslashes($gallery->description ?? '') }}',
         category: '{{ $gallery->category }}'

@@ -159,7 +159,7 @@
         <div class="auth-background">
             @if($heroBackground && file_exists(public_path('storage/' . $heroBackground)))
                 <!-- Custom Background Image -->
-                <img src="{{ asset('storage/' . $heroBackground) }}" 
+                <img src="{{ Storage::url($heroBackground) }}" 
                      alt="Background"
                      style="width: 100%; height: 100%; object-fit: cover;">
             @endif

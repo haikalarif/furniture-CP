@@ -14,7 +14,7 @@
         <div><span class="text-secondary">Title:</span> {{ Str::limit($homePage->hero_title ?? 'NULL', 30) }}</div>
         <div><span class="text-secondary">Background:</span> <span class="text-info">{{ $homePage->hero_background ?? 'NULL' }}</span></div>
         @if($homePage && $homePage->hero_background)
-            <div><span class="text-secondary">Full URL:</span> <span class="text-primary small">{{ asset('storage/' . $homePage->hero_background) }}</span></div>
+            <div><span class="text-secondary">Full URL:</span> <span class="text-primary small">{{ Storage::url($homePage->hero_background) }}</span></div>
             <div><span class="text-secondary">File Exists:</span> 
                 <span class="{{ file_exists(public_path('storage/' . $homePage->hero_background)) ? 'text-success' : 'text-danger' }}">
                     {{ file_exists(public_path('storage/' . $homePage->hero_background)) ? '✓ YES' : '✗ NO' }}
@@ -99,7 +99,7 @@
     <div class="position-absolute top-0 start-0 w-100 h-100" style="z-index: 0;">
         @if($homePage && $homePage->hero_background)
             <!-- Custom Background Image -->
-            <img src="{{ asset('storage/' . $homePage->hero_background) }}" 
+            <img src="{{ Storage::url($homePage->hero_background) }}" 
                  alt="Hero Background"
                  class="w-100 h-100 object-fit-cover">
             <!-- Overlay Gradient -->
@@ -190,7 +190,7 @@
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="card h-100 border-0 shadow-sm">
                         <div class="position-relative overflow-hidden rounded-3" style="padding-top: 70%;">
-                            <img src="{{ asset('storage/' . $product->image) }}" 
+                            <img src="{{ Storage::url($product->image) }}" 
                                  alt="{{ $product->name }}"
                                  class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover"
                                  style="transition: transform 0.5s;">
@@ -270,7 +270,7 @@
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="card h-100 border-0 shadow-sm">
                         <div class="position-relative overflow-hidden rounded-3" style="padding-top: 70%;">
-                            <img src="{{ asset('storage/' . $product->image) }}" 
+                            <img src="{{ Storage::url($product->image) }}" 
                                  alt="{{ $product->name }}"
                                  class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover"
                                  style="transition: transform 0.5s;">
@@ -355,7 +355,7 @@
                             <p class="card-text mb-4">"{{ $testimonial->content }}"</p>
                             <div class="d-flex align-items-center">
                                 @if($testimonial->avatar)
-                                    <img src="{{ asset('storage/' . $testimonial->avatar) }}" 
+                                    <img src="{{ Storage::url($testimonial->avatar) }}" 
                                          alt="{{ $testimonial->client_name }}"
                                          class="rounded-circle me-3"
                                          style="width: 48px; height: 48px; object-fit: cover;">
@@ -395,7 +395,7 @@
                 <div class="col-12 col-md-6 col-lg-4">
                     <article class="card h-100 border-0 shadow-sm">
                         <div class="position-relative overflow-hidden" style="padding-top: 56.25%;">
-                            <img src="{{ asset('storage/' . $article->featured_image) }}" 
+                            <img src="{{ Storage::url($article->featured_image) }}" 
                                  alt="{{ $article->title }}"
                                  class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover">
                         </div>
@@ -432,7 +432,7 @@
             @foreach($galleries as $gallery)
                 <div class="col-6 col-md-4 col-lg-3">
                     <div class="gallery-item position-relative overflow-hidden rounded shadow-sm" style="height: 250px; cursor: pointer;">
-                        <img src="{{ asset('storage/' . $gallery->image) }}" 
+                        <img src="{{ Storage::url($gallery->image) }}" 
                              alt="{{ $gallery->title }}"
                              class="w-100 h-100 object-fit-cover gallery-image"
                              data-bs-toggle="modal" 
@@ -459,7 +459,7 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                             </div>
                             <div class="modal-body p-0">
-                                <img src="{{ asset('storage/' . $gallery->image) }}" 
+                                <img src="{{ Storage::url($gallery->image) }}" 
                                      alt="{{ $gallery->title }}"
                                      class="w-100">
                             </div>

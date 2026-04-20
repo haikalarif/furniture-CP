@@ -46,7 +46,7 @@
                 <div class="col-12 col-sm-6 col-lg-3">
                     <div class="card h-100 shadow-sm border-0 product-card">
                         <div class="position-relative overflow-hidden" style="height: 250px;">
-                            <img src="{{ asset('storage/' . $product->image) }}" 
+                            <img src="{{ Storage::url($product->image) }}" 
                                  alt="{{ $product->name }}"
                                  class="card-img-top h-100 w-100" style="object-fit: cover; transition: transform 0.3s;">
                             

@@ -48,7 +48,7 @@
                 <label class="form-label">Gambar Utama</label>
                 @if($article->featured_image)
                     <div class="mb-2">
-                        <img src="{{ Storage::url(article->featured_image) }}" 
+                        <img src="{{ Storage::url($article->featured_image) }}" 
                              alt="{{ $article->title }}"
                              class="rounded w-100" style="height: 192px; object-fit: cover;">
                     </div>

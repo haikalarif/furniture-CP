@@ -10,7 +10,7 @@
             <div class="col-lg-10">
                 <div class="card shadow-sm border-0">
                     <div class="overflow-hidden" style="height: 400px;">
-                        <img src="{{ asset('storage/' . $article->featured_image) }}" 
+                        <img src="{{ Storage::url($article->featured_image) }}" 
                              alt="{{ $article->title }}"
                              class="card-img-top h-100 w-100" style="object-fit: cover;">
                     </div>
@@ -43,7 +43,7 @@
                                 <div class="col-12 col-md-4">
                                     <article class="card h-100 shadow-sm border-0">
                                         <div class="overflow-hidden" style="height: 150px;">
-                                            <img src="{{ asset('storage/' . $related->featured_image) }}" 
+                                            <img src="{{ Storage::url($related->featured_image) }}" 
                                                  alt="{{ $related->title }}"
                                                  class="card-img-top h-100 w-100" style="object-fit: cover;">
                                         </div>
