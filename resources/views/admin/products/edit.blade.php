@@ -47,7 +47,7 @@
             <div class="col-md-6">
                 <label class="form-label">Gambar Utama</label>
                 <div class="mb-2">
-                    <img src="{{ asset('storage/' . $product->image) }}" 
+                    <img src="{{ Storage::url($product->image) }}" 
                          alt="{{ $product->name }}"
                          class="rounded" style="width: 128px; height: 128px; object-fit: cover;">
                 </div>

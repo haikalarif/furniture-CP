@@ -29,7 +29,7 @@
                         <td>
                             <div class="d-flex align-items-center">
                                 @if($testimonial->avatar)
-                                    <img src="{{ asset('storage/' . $testimonial->avatar) }}" 
+                                    <img src="{{ Storage::url($testimonial->avatar) }}" 
                                          alt="{{ $testimonial->client_name }}"
                                          class="rounded-circle me-3" style="width: 40px; height: 40px; object-fit: cover;">
                                 @else

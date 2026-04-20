@@ -48,7 +48,7 @@
             <div class="col-12">
                 <label class="form-label">Gambar Saat Ini</label>
                 <div class="mb-3">
-                    <img src="{{ asset('storage/' . $gallery->image) }}" 
+                    <img src="{{ Storage::url($gallery->image) }}" 
                          alt="{{ $gallery->title }}"
                          class="rounded" style="max-width: 400px; height: auto;">
                 </div>

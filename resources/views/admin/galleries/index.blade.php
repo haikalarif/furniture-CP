@@ -27,7 +27,7 @@
                 @forelse($galleries as $gallery)
                     <tr>
                         <td>
-                            <img src="{{ asset('storage/' . $gallery->image) }}" 
+                            <img src="{{ Storage::url($gallery->image) }}" 
                                  alt="{{ $gallery->title }}"
                                  class="rounded" style="width: 100px; height: 70px; object-fit: cover;">
                         </td>

@@ -29,7 +29,7 @@
                 @forelse($articles as $article)
                     <tr>
                         <td>
-                            <img src="{{ asset('storage/' . $article->featured_image) }}" 
+                            <img src="{{ Storage::url(article->featured_image) }}" 
                                  alt="{{ $article->title }}"
                                  class="rounded" style="width: 64px; height: 64px; object-fit: cover;">
                         </td>

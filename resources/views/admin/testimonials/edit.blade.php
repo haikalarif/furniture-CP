@@ -70,7 +70,7 @@
                 <label class="form-label">Avatar</label>
                 @if($testimonial->avatar)
                     <div class="mb-2">
-                        <img src="{{ asset('storage/' . $testimonial->avatar) }}" 
+                        <img src="{{ Storage::url($testimonial->avatar) }}" 
                              alt="{{ $testimonial->client_name }}"
                              class="rounded-circle" style="width: 96px; height: 96px; object-fit: cover;">
                     </div>

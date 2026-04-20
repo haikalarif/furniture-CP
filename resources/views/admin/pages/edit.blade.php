@@ -86,7 +86,7 @@
                                 <label class="form-label">Background Image (Opsional)</label>
                                 @if($page->hero_background)
                                     <div class="mb-2">
-                                        <img src="{{ asset('storage/' . $page->hero_background) }}" 
+                                        <img src="{{ Storage::url($page->hero_background) }}" 
                                              alt="Hero Background"
                                              class="rounded w-100" style="height: 128px; object-fit: cover;">
                                     </div>

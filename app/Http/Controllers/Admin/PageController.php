@@ -33,14 +33,18 @@ class PageController extends Controller
 
         // Handle hero background upload
         if ($request->hasFile('hero_background')) {
-            // Delete old background if exists
-            if ($page->hero_background && \Storage::disk('public')->exists($page->hero_background)) {
-                \Storage::disk('public')->delete($page->hero_background);
+            $disk = config('filesystems.default');
+
+            // Delete old background if exists  
+            if ($page->hero_background && \Storage::disk($disk)->exists($page->hero_background)) {
+                \Storage::disk($disk)->delete($page->hero_background);
             }
             
             $file = $request->file('hero_background');
             $filename = time() . '_hero_' . \Str::random(10) . '.' . $file->getClientOriginalExtension();
-            $path = $file->storeAs('hero', $filename, 'public');
+            
+            $path = $file->storeAs('hero', $filename, $disk);
+            
             $validated['hero_background'] = $path;
         }
 

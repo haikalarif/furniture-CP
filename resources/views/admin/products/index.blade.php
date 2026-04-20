@@ -28,7 +28,7 @@
                 @forelse($products as $product)
                     <tr>
                         <td class="text-center">
-                            <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="rounded" style="width: 64px; height: 64px; object-fit: cover;">
+                            <img src="{{ Storage::url($product->image) }}" alt="{{ $product->name }}" class="rounded" style="width: 64px; height: 64px; object-fit: cover;">
                         </td>
                         <td>
                             <div class="fw-medium">{{ $product->name }}</div>
