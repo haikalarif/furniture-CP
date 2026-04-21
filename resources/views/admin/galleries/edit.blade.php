@@ -9,7 +9,7 @@
         <h5 class="mb-0">Edit Galeri</h5>
     </div>
 
-    <form action="{{ route('admin.galleries.update', $gallery) }}" method="POST" enctype="multipart/form-data" class="card-body">
+    <form id="main-form" action="{{ route('admin.galleries.update', $gallery) }}" method="POST" enctype="multipart/form-data" class="card-body">
         @csrf
         @method('PUT')
 
@@ -50,7 +50,7 @@
                 <div class="mb-3">
                     <img src="{{ Storage::url($gallery->image) }}" 
                          alt="{{ $gallery->title }}"
-                         class="rounded" style="max-width: 400px; height: auto;">
+                         class="rounded" style="max-width: 200px; height: auto;">
                 </div>
                 <label class="form-label">Ganti Gambar (Opsional)</label>
                 <input type="file" name="image" accept="image/*" 
@@ -75,10 +75,17 @@
                 Batal
             </a>
             <button type="submit" class="btn btn-sm btn-primary">
-                Update Galeri
+                <i class="fas fa-save me-1"></i> Update
             </button>
         </div>
     </form>
+</div>
+
+<!-- Floating Save Button -->
+<div class="floating-save-btn">
+    <button type="submit" form="main-form" class="btn btn-sm btn-primary shadow" title="Update Galeri">
+        <i class="fas fa-save me-1"></i> Update
+    </button>
 </div>
 
 @endsection

@@ -9,7 +9,7 @@
         <h5 class="mb-0">Edit Keunggulan</h5>
     </div>
 
-    <form action="{{ route('admin.features.update', $feature) }}" method="POST" class="card-body">
+    <form id="main-form" action="{{ route('admin.features.update', $feature) }}" method="POST" class="card-body">
         @csrf
         @method('PUT')
 
@@ -61,12 +61,13 @@
                 Batal
             </a>
             <button type="submit" class="btn btn-sm btn-primary">
-                Update Keunggulan
+                <i class="fas fa-save me-1"></i> Update
             </button>
         </div>
     </form>
 </div>
 
+<!-- Preview Icon -->
 <div class="card shadow-sm mt-3">
     <div class="card-header bg-white">
         <h6 class="mb-0">Preview Icon</h6>
@@ -82,6 +83,7 @@
     </div>
 </div>
 
+<!-- Referensi Icon -->
 <div class="card shadow-sm mt-3">
     <div class="card-header bg-white">
         <h6 class="mb-0">Referensi Icon Font Awesome</h6>
@@ -143,6 +145,13 @@
             </a>
         </div>
     </div>
+</div>
+
+<!-- Floating Save Button -->
+<div class="floating-save-btn">
+    <button type="submit" form="main-form" class="btn btn-sm btn-primary shadow" title="Update Keunggulan">
+        <i class="fas fa-save me-1"></i> Update
+    </button>
 </div>
 
 @endsection

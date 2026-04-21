@@ -65,7 +65,7 @@
                             </span>
                         </td>
                         <td class="text-center">
-                            <div class="d-flex gap-2 justify-content-center">
+                            <div class="d-flex gap-1 justify-content-center">
                                 <a href="{{ route('admin.products.edit', $product) }}" 
                                    class="btn btn-sm btn-outline-primary">
                                     <i class="fas fa-edit"></i>

@@ -9,7 +9,7 @@
         <h5 class="mb-0">Tambah Galeri Baru</h5>
     </div>
 
-    <form action="{{ route('admin.galleries.store') }}" method="POST" enctype="multipart/form-data" class="card-body">
+    <form id="main-form" action="{{ route('admin.galleries.store') }}" method="POST" enctype="multipart/form-data" class="card-body">
         @csrf
 
         <div class="row g-3">
@@ -72,50 +72,55 @@
                 Batal
             </a>
             <button type="submit" class="btn btn-sm btn-primary">
-                Simpan Galeri
+                <i class="fas fa-save me-1"></i> Simpan
             </button>
         </div>
     </form>
 </div>
 
-<div class="card shadow-sm mt-3">
-    <div class="card-header bg-white">
-        <h6 class="mb-0">Tips Foto Galeri</h6>
-    </div>
-    <div class="card-body">
-        <div class="row g-3">
-            <div class="col-md-4">
-                <div class="border rounded p-3">
-                    <h6 class="text-primary">📸 Interior</h6>
-                    <ul class="small mb-0">
-                        <li>Ruang tamu dengan furniture</li>
-                        <li>Ruang makan</li>
-                        <li>Kamar tidur</li>
-                        <li>Ruang kerja</li>
-                    </ul>
-                </div>
+<!-- Floating Save Button -->
+<div class="floating-save-btn">
+    <button type="submit" form="main-form" class="btn btn-sm btn-primary shadow" title="Simpan Galeri">
+        <i class="fas fa-save me-1"></i> Simpan
+    </button>
+</div>
+
+<div class="card-header bg-white">
+    <h6 class="mb-0">Tips Foto Galeri</h6>
+</div>
+<div class="card-body">
+    <div class="row g-3">
+        <div class="col-md-4">
+            <div class="border rounded p-3">
+                <h6 class="text-primary">📸 Interior</h6>
+                <ul class="small mb-0">
+                    <li>Ruang tamu dengan furniture</li>
+                    <li>Ruang makan</li>
+                    <li>Kamar tidur</li>
+                    <li>Ruang kerja</li>
+                </ul>
             </div>
-            <div class="col-md-4">
-                <div class="border rounded p-3">
-                    <h6 class="text-success">🏡 Exterior</h6>
-                    <ul class="small mb-0">
-                        <li>Teras dengan furniture outdoor</li>
-                        <li>Taman dengan gazebo</li>
-                        <li>Balkon</li>
-                        <li>Area outdoor lainnya</li>
-                    </ul>
-                </div>
+        </div>
+        <div class="col-md-4">
+            <div class="border rounded p-3">
+                <h6 class="text-success">🏡 Exterior</h6>
+                <ul class="small mb-0">
+                    <li>Teras dengan furniture outdoor</li>
+                    <li>Taman dengan gazebo</li>
+                    <li>Balkon</li>
+                    <li>Area outdoor lainnya</li>
+                </ul>
             </div>
-            <div class="col-md-4">
-                <div class="border rounded p-3">
-                    <h6 class="text-info">🔍 Detail</h6>
-                    <ul class="small mb-0">
-                        <li>Close-up furniture</li>
-                        <li>Detail ukiran</li>
-                        <li>Tekstur material</li>
-                        <li>Finishing produk</li>
-                    </ul>
-                </div>
+        </div>
+        <div class="col-md-4">
+            <div class="border rounded p-3">
+                <h6 class="text-info">🔍 Detail</h6>
+                <ul class="small mb-0">
+                    <li>Close-up furniture</li>
+                    <li>Detail ukiran</li>
+                    <li>Tekstur material</li>
+                    <li>Finishing produk</li>
+                </ul>
             </div>
         </div>
     </div>

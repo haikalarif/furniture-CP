@@ -75,6 +75,17 @@
             background: rgba(0,0,0,0.5);
             z-index: 999;
         }
+
+        .floating-save-btn {
+            position: fixed;
+            right: 0;
+            bottom: 30%;
+            z-index: 1050;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 0.5rem;
+        }
         
         /* Mobile Responsive */
         @media (max-width: 768px) {
@@ -299,5 +310,31 @@
     </script>
     
     @stack('scripts')
+
+    <script>
+    // Global form submit loading state — berlaku di semua form admin
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('form').forEach(function (form) {
+            form.addEventListener('submit', function () {
+                // Disable & tambah spinner ke semua tombol submit dalam form ini
+                form.querySelectorAll('button[type="submit"]').forEach(function (btn) {
+                    btn.disabled = true;
+                    btn.dataset.originalHtml = btn.innerHTML;
+                    btn.innerHTML = '<span class="spinner-border spinner-border-sm me-1" role="status" aria-hidden="true"></span> Menyimpan...';
+                });
+
+                // Juga handle tombol floating yang pakai form="id"
+                const formId = form.getAttribute('id');
+                if (formId) {
+                    document.querySelectorAll('button[type="submit"][form="' + formId + '"]').forEach(function (btn) {
+                        btn.disabled = true;
+                        btn.dataset.originalHtml = btn.innerHTML;
+                        btn.innerHTML = '<span class="spinner-border spinner-border-sm me-1" role="status" aria-hidden="true"></span> Menyimpan...';
+                    });
+                }
+            });
+        });
+    });
+    </script>
 </body>
 </html>

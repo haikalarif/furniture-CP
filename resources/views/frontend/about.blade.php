@@ -10,7 +10,7 @@
             <div class="col-lg-10">
                 <div class="text-center mb-5">
                     <h2 class="fw-bold mb-3">About</h2>
-                    <div class="mx-auto" style="width: 100px; height: 4px; background-color: var(--bs-primary);"></div>
+                    <div class="mx-auto" style="width: 100px; height: 4px; background-color: var(--primary-color);"></div>
                 </div>
 
                 @if($aboutPage)

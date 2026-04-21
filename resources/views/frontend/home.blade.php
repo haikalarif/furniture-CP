@@ -26,155 +26,354 @@
 @endif
 
 @php
-    // Get hero theme colors and decorations
+    /*
+    |--------------------------------------------------------------------------
+    | Hero Theme Config — Aturan 60-30-10
+    | 60% = warna netral (bg utama)
+    | 30% = warna tema (elemen sekunder, overlay, dekorasi)
+    | 10% = warna aksen/kontras (tombol CTA, highlight)
+    |--------------------------------------------------------------------------
+    */
     $themeConfig = [
+
+        // ── DEFAULT (Modern Minimalist) ──────────────────────────────────────
         'default' => [
-            'bg_class' => 'bg-gradient',
-            'bg_style' => 'background: linear-gradient(135deg, #fef3c7 0%, #e7e5e4 100%);',
-            'text_class' => 'text-dark',
-            'accent_class' => 'text-primary',
-            'decoration' => '',
+            'bg_style'        => 'background: linear-gradient(135deg, #fdfbf9 0%, #f3ece4 100%);',
+            'text_color'      => '#2d2416',
+            'subtitle_color'  => '#5d503d',
+            'badge_bg'        => 'rgba(45, 36, 22, 0.08)',
+            'badge_color'     => '#2d2416',
+            'btn_primary'     => 'background:#2d2416; color:#ffffff; border:none;',
+            'btn_secondary'   => 'background:transparent; color:#2d2416; border:2px solid #2d2416;',
+            'scroll_color'    => '#2d2416',
+            'deco_shapes'     => [],
+            'decoration'      => '',
+            'promo_label'     => '',
         ],
+
+        // ── RAMADAN ──────────────────────────────────────────────────────────
+        // 60% Ivory (#fcfaf5) · 30% Sage Green (#5d7a5f) · 10% Warm Gold (#d4af37)
         'ramadan' => [
-            'bg_class' => 'bg-gradient',
-            'bg_style' => 'background: linear-gradient(135deg, #581c87 0%, #1e3a8a 100%);',
-            'text_class' => 'text-white',
-            'accent_class' => 'text-warning',
-            'decoration' => '🌙✨',
+            'bg_style'        => 'background: linear-gradient(160deg, #fcfaf5 0%, #f0f5f0 100%);',
+            'text_color'      => '#1e2b1f',
+            'subtitle_color'  => '#3e523f',
+            'badge_bg'        => 'rgba(93, 122, 95, 0.12)',
+            'badge_color'     => '#5d7a5f',
+            'btn_primary'     => 'background:#d4af37; color:#ffffff; border:none; box-shadow: 0 4px 14px rgba(212,175,55,0.4);',
+            'btn_secondary'   => 'background:transparent; color:#5d7a5f; border:2px solid #5d7a5f;',
+            'scroll_color'    => '#5d7a5f',
+            'deco_shapes'     => [
+                ['type'=>'crescent', 'pos'=>'top:5%; right:6%;',   'color'=>'#d4af37', 'opacity'=>'0.15', 'size'=>'180px'],
+                ['type'=>'lantern',  'pos'=>'top:8%; left:5%;',    'color'=>'#d4af37', 'opacity'=>'0.12', 'size'=>'90px'],
+                ['type'=>'star4',    'pos'=>'top:18%; right:14%;', 'color'=>'#d4af37', 'opacity'=>'0.2', 'size'=>'28px'],
+                ['type'=>'pattern-islamic', 'pos'=>'top:0; left:0; width:100%; height:100%;', 'color'=>'#d4af37', 'opacity'=>'0.03', 'size'=>'100%'],
+            ],
+            'decoration'      => '🌙',
+            'promo_label'     => 'Berkah Ramadan: Furniture Impian',
         ],
+
+        // ── IDUL FITRI ───────────────────────────────────────────────────────
         'idul-fitri' => [
-            'bg_class' => 'bg-gradient',
-            'bg_style' => 'background: linear-gradient(135deg, #059669 0%, #14b8a6 100%);',
-            'text_class' => 'text-white',
-            'accent_class' => 'text-warning',
-            'decoration' => '✨🎉',
+            'bg_style'        => 'background: linear-gradient(160deg, #ffffff 0%, #f4f9f4 100%);',
+            'text_color'      => '#1a2e1c',
+            'subtitle_color'  => '#4a6741',
+            'badge_bg'        => 'rgba(74, 103, 65, 0.1)',
+            'badge_color'     => '#4a6741',
+            'btn_primary'     => 'background:#5d7a5f; color:#ffffff; border:none;',
+            'btn_secondary'   => 'background:transparent; color:#5d7a5f; border:2px solid #5d7a5f;',
+            'scroll_color'    => '#5d7a5f',
+            'deco_shapes'     => [
+                ['type'=>'ketupat', 'pos'=>'top:8%; right:8%;',    'color'=>'#5d7a5f', 'opacity'=>'0.15', 'size'=>'140px'],
+                ['type'=>'ketupat', 'pos'=>'bottom:10%; left:5%;', 'color'=>'#d4af37', 'opacity'=>'0.12', 'size'=>'100px'],
+            ],
+            'decoration'      => '🕌',
+            'promo_label'     => 'Kemenangan Fitri: Diskon Hingga 50%',
         ],
+
+        // ── IDUL ADHA ────────────────────────────────────────────────────────
         'idul-adha' => [
-            'bg_class' => 'bg-gradient',
-            'bg_style' => 'background: linear-gradient(135deg, #15803d 0%, #059669 100%);',
-            'text_class' => 'text-white',
-            'accent_class' => 'text-warning',
-            'decoration' => '🐑🕌',
+            'bg_style'        => 'background: linear-gradient(160deg, #f9f6f1 0%, #f0ede4 100%);',
+            'text_color'      => '#3c2f1d',
+            'subtitle_color'  => '#5d4d37',
+            'badge_bg'        => 'rgba(107, 124, 63, 0.1)',
+            'badge_color'     => '#6b7c3f',
+            'btn_primary'     => 'background:#6b7c3f; color:#ffffff; border:none;',
+            'btn_secondary'   => 'background:transparent; color:#6b7c3f; border:2px solid #6b7c3f;',
+            'scroll_color'    => '#6b7c3f',
+            'deco_shapes'     => [
+                ['type'=>'arch',  'pos'=>'top:0; right:0;', 'color'=>'#6b7c3f', 'opacity'=>'0.05', 'size'=>'320px'],
+            ],
+            'decoration'      => '🐏',
+            'promo_label'     => 'Qurban Sale: Berbagi Kebahagiaan',
         ],
+
+        // ── NATAL ────────────────────────────────────────────────────────────
         'natal' => [
-            'bg_class' => 'bg-gradient',
-            'bg_style' => 'background: linear-gradient(135deg, #b91c1c 0%, #15803d 50%, #b91c1c 100%);',
-            'text_class' => 'text-white',
-            'accent_class' => 'text-warning',
-            'decoration' => '🎄⛄',
+            'bg_style'        => 'background: linear-gradient(160deg, #ffffff 0%, #f8faf8 100%);',
+            'text_color'      => '#132a17',
+            'subtitle_color'  => '#1e4d2b',
+            'badge_bg'        => 'rgba(184, 28, 47, 0.1)',
+            'badge_color'     => '#b81c2f',
+            'btn_primary'     => 'background:#b81c2f; color:#ffffff; border:none;',
+            'btn_secondary'   => 'background:transparent; color:#b81c2f; border:2px solid #b81c2f;',
+            'scroll_color'    => '#1e4d2b',
+            'deco_shapes'     => [
+                ['type'=>'tree',      'pos'=>'top:0; right:5%;', 'color'=>'#1e4d2b', 'opacity'=>'0.08', 'size'=>'200px'],
+                ['type'=>'snowflake', 'pos'=>'top:15%; left:10%;', 'color'=>'#b81c2f', 'opacity'=>'0.1', 'size'=>'30px'],
+                ['type'=>'pine-branch', 'pos'=>'top:-20px; left:-20px;', 'color'=>'#1e4d2b', 'opacity'=>'0.15', 'size'=>'250px'],
+            ],
+            'decoration'      => '🎄',
+            'promo_label'     => 'Kado Natal Untuk Rumah Anda',
         ],
+
+        // ── TAHUN BARU ───────────────────────────────────────────────────────
         'tahun-baru' => [
-            'bg_class' => 'bg-gradient',
-            'bg_style' => 'background: linear-gradient(135deg, #1e3a8a 0%, #7e22ce 50%, #be185d 100%);',
-            'text_class' => 'text-white',
-            'accent_class' => 'text-warning',
-            'decoration' => '🎆🎊',
+            'bg_style'        => 'background: radial-gradient(circle at top right, #1a1a2e 0%, #0d0d14 100%);',
+            'text_color'      => '#ffffff',
+            'subtitle_color'  => '#aeb9cc',
+            'badge_bg'        => 'rgba(255, 255, 255, 0.1)',
+            'badge_color'     => '#c0c8d8',
+            'btn_primary'     => 'background:#c0c8d8; color:#0d0d14; border:none; font-weight:bold;',
+            'btn_secondary'   => 'background:transparent; color:#ffffff; border:1px solid rgba(255,255,255,0.4);',
+            'scroll_color'    => '#ffffff',
+            'deco_shapes'     => [
+                ['type'=>'sparkle', 'pos'=>'top:10%; right:10%;', 'color'=>'#ffffff', 'opacity'=>'0.3', 'size'=>'60px'],
+                ['type'=>'sparkle', 'pos'=>'bottom:20%; left:10%;', 'color'=>'#c0c8d8', 'opacity'=>'0.2', 'size'=>'40px'],
+            ],
+            'decoration'      => '🎆',
+            'promo_label'     => 'Tahun Baru, Suasana Baru!',
         ],
+
+        // ── IMLEK ────────────────────────────────────────────────────────────
         'imlek' => [
-            'bg_class' => 'bg-gradient',
-            'bg_style' => 'background: linear-gradient(135deg, #dc2626 0%, #eab308 100%);',
-            'text_class' => 'text-white',
-            'accent_class' => 'text-warning',
-            'decoration' => '🧧🐉',
+            'bg_style'        => 'background: linear-gradient(160deg, #2a1a0e 0%, #1a0f08 100%);',
+            'text_color'      => '#fdf3e3',
+            'subtitle_color'  => '#d4a017',
+            'badge_bg'        => 'rgba(196, 30, 30, 0.2)',
+            'badge_color'     => '#fdf3e3',
+            'btn_primary'     => 'background:#c41e1e; color:#ffffff; border:none;',
+            'btn_secondary'   => 'background:transparent; color:#fdf3e3; border:2px solid #c41e1e;',
+            'scroll_color'    => '#d4a017',
+            'deco_shapes'     => [
+                ['type'=>'lantern', 'pos'=>'top:0; right:10%;', 'color'=>'#c41e1e', 'opacity'=>'0.4', 'size'=>'120px'],
+                ['type'=>'cloud',   'pos'=>'bottom:0; left:0;', 'color'=>'#c41e1e', 'opacity'=>'0.1', 'size'=>'300px'],
+                ['type'=>'corner-oriental', 'pos'=>'top:20px; left:20px;', 'color'=>'#d4a017', 'opacity'=>'0.4', 'size'=>'80px'],
+            ],
+            'decoration'      => '🧧',
+            'promo_label'     => 'Hoki Melimpah: Angpao Furniture',
         ],
+
+        // ── KEMERDEKAAN ───────────────────────────────────────────────────────
         'kemerdekaan' => [
-            'bg_class' => 'bg-gradient',
-            'bg_style' => 'background: linear-gradient(135deg, #dc2626 0%, #ffffff 50%, #dc2626 100%);',
-            'text_class' => 'text-dark',
-            'accent_class' => 'text-danger',
-            'decoration' => '🇮🇩🎌',
+            'bg_style'        => 'background: linear-gradient(160deg, #ffffff 0%, #fcfcfc 100%);',
+            'text_color'      => '#000000',
+            'subtitle_color'  => '#444444',
+            'badge_bg'        => 'rgba(204, 0, 1, 0.08)',
+            'badge_color'     => '#cc0001',
+            'btn_primary'     => 'background:#cc0001; color:#ffffff; border:none;',
+            'btn_secondary'   => 'background:transparent; color:#cc0001; border:2px solid #cc0001;',
+            'scroll_color'    => '#cc0001',
+            'deco_shapes'     => [
+                ['type'=>'ribbon', 'pos'=>'top:0; width:100%;', 'color'=>'#cc0001', 'opacity'=>'0.1', 'size'=>'40px'],
+                ['type'=>'star5',  'pos'=>'bottom:15%; right:10%;', 'color'=>'#cc0001', 'opacity'=>'0.15', 'size'=>'60px'],
+            ],
+            'decoration'      => '🇮🇩',
+            'promo_label'     => 'Merdeka Sale: Bangga Buatan Indonesia',
         ],
     ];
 
     $currentTheme = $homePage->hero_theme ?? 'default';
     $theme = $themeConfig[$currentTheme] ?? $themeConfig['default'];
-    
-    $heroTitle = $homePage->hero_title ?? 'Furniture Premium untuk Hunian Impian';
+
+    $heroTitle    = $homePage->hero_title    ?? 'Furniture Premium untuk Hunian Impian';
     $heroSubtitle = $homePage->hero_subtitle ?? 'Desain custom minimalis dengan material berkualitas tinggi, dibuat khusus untuk Anda';
 @endphp
 
 <!-- Hero Section -->
-<section class="position-relative overflow-hidden" style="min-height: 100vh; display: flex; align-items: center;">
-    <!-- Background Layer -->
-    <div class="position-absolute top-0 start-0 w-100 h-100" style="z-index: 0;">
-        @if($homePage && $homePage->hero_background)
-            <!-- Custom Background Image -->
-            <img src="{{ Storage::url($homePage->hero_background) }}" 
+<section class="hero-section position-relative overflow-hidden" style="min-height: 100vh; display: flex; align-items: center; {{ $theme['bg_style'] }}">
+
+    {{-- Background image (jika ada) --}}
+    @if($homePage && $homePage->hero_background)
+        <div class="position-absolute top-0 start-0 w-100 h-100" style="z-index:0;">
+            <img src="{{ Storage::url($homePage->hero_background) }}"
                  alt="Hero Background"
                  class="w-100 h-100 object-fit-cover">
-            <!-- Overlay Gradient -->
-            <div class="position-absolute top-0 start-0 w-100 h-100" style="{{ $theme['bg_style'] }} opacity: 0.6;"></div>
-        @else
-            <!-- Default Gradient Background -->
-            <div class="position-absolute top-0 start-0 w-100 h-100" style="{{ $theme['bg_style'] }}"></div>
-        @endif
-    </div>
-
-    <!-- Decorative Elements -->
-    @if(!empty($theme['decoration']))
-        <div class="position-absolute top-0 start-0 m-4 opacity-25 animate__animated animate__pulse animate__infinite" style="font-size: 4rem; z-index: 1;">
-            {{ Str::substr($theme['decoration'], 0, 2) }}
-        </div>
-        <div class="position-absolute bottom-0 end-0 m-4 opacity-25 animate__animated animate__pulse animate__infinite" style="font-size: 4rem; z-index: 1; animation-delay: 1s;">
-            {{ Str::substr($theme['decoration'], 2) }}
+            <div class="position-absolute top-0 start-0 w-100 h-100"
+                 style="{{ $theme['bg_style'] }} opacity:0.75;"></div>
         </div>
     @endif
 
-    <div class="container text-center position-relative" style="z-index: 10;">
-        @if(!empty($theme['decoration']))
-            <div class="display-3 mb-4 animate__animated animate__bounce animate__infinite">
-                {{ $theme['decoration'] }}
+    {{-- SVG / CSS Decorative Shapes --}}
+    @if(!empty($theme['deco_shapes']))
+        @foreach($theme['deco_shapes'] as $shape)
+            <div class="hero-deco position-absolute" style="z-index:1; {{ $shape['pos'] }}; width:{{ $shape['size'] }}; height:{{ $shape['size'] }}; opacity:{{ $shape['opacity'] }}; pointer-events:none;">
+                @if($shape['type'] === 'crescent')
+                    {{-- Bulan sabit --}}
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                        <path d="M70,50 A30,30 0 1,1 70,50.01 A20,20 0 1,0 70,50Z" fill="{{ $shape['color'] }}"/>
+                    </svg>
+                @elseif($shape['type'] === 'star4')
+                    {{-- Bintang 4 sudut --}}
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                        <polygon points="50,5 61,39 95,50 61,61 50,95 39,61 5,50 39,39" fill="{{ $shape['color'] }}"/>
+                    </svg>
+                @elseif($shape['type'] === 'star5')
+                    {{-- Bintang 5 sudut --}}
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                        <polygon points="50,5 61,35 95,35 68,57 79,91 50,70 21,91 32,57 5,35 39,35" fill="{{ $shape['color'] }}"/>
+                    </svg>
+                @elseif($shape['type'] === 'ketupat')
+                    {{-- Ketupat / diamond --}}
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                        <polygon points="50,5 95,50 50,95 5,50" fill="none" stroke="{{ $shape['color'] }}" stroke-width="4"/>
+                        <polygon points="50,18 82,50 50,82 18,50" fill="none" stroke="{{ $shape['color'] }}" stroke-width="2.5"/>
+                    </svg>
+                @elseif($shape['type'] === 'lantern')
+                    {{-- Lampion --}}
+                    <svg viewBox="0 0 60 100" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                        <rect x="25" y="0" width="10" height="12" rx="2" fill="{{ $shape['color'] }}"/>
+                        <ellipse cx="30" cy="55" rx="22" ry="38" fill="{{ $shape['color'] }}"/>
+                        <line x1="30" y1="93" x2="30" y2="100" stroke="{{ $shape['color'] }}" stroke-width="2"/>
+                        <line x1="8" y1="40" x2="52" y2="40" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+                        <line x1="8" y1="55" x2="52" y2="55" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+                        <line x1="8" y1="70" x2="52" y2="70" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+                    </svg>
+                @elseif($shape['type'] === 'tree')
+                    {{-- Pohon natal --}}
+                    <svg viewBox="0 0 100 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                        <polygon points="50,5 90,60 70,60 85,95 60,95 60,135 40,135 40,95 15,95 30,60 10,60" fill="{{ $shape['color'] }}"/>
+                    </svg>
+                @elseif($shape['type'] === 'snowflake')
+                    {{-- Kepingan salju --}}
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                        <line x1="50" y1="5"  x2="50" y2="95" stroke="{{ $shape['color'] }}" stroke-width="6" stroke-linecap="round"/>
+                        <line x1="5"  y1="50" x2="95" y2="50" stroke="{{ $shape['color'] }}" stroke-width="6" stroke-linecap="round"/>
+                        <line x1="18" y1="18" x2="82" y2="82" stroke="{{ $shape['color'] }}" stroke-width="6" stroke-linecap="round"/>
+                        <line x1="82" y1="18" x2="18" y2="82" stroke="{{ $shape['color'] }}" stroke-width="6" stroke-linecap="round"/>
+                        <circle cx="50" cy="5"  r="5" fill="{{ $shape['color'] }}"/>
+                        <circle cx="50" cy="95" r="5" fill="{{ $shape['color'] }}"/>
+                        <circle cx="5"  cy="50" r="5" fill="{{ $shape['color'] }}"/>
+                        <circle cx="95" cy="50" r="5" fill="{{ $shape['color'] }}"/>
+                    </svg>
+                @elseif($shape['type'] === 'sparkle')
+                    {{-- Bintang kilau tahun baru --}}
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                        <polygon points="50,2 56,44 98,50 56,56 50,98 44,56 2,50 44,44" fill="{{ $shape['color'] }}"/>
+                        <polygon points="50,20 53,47 80,50 53,53 50,80 47,53 20,50 47,47" fill="{{ $shape['color'] }}" opacity="0.5"/>
+                    </svg>
+                @elseif($shape['type'] === 'cloud')
+                    {{-- Awan dekoratif imlek --}}
+                    <svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                        <path d="M20,80 Q0,80 0,60 Q0,40 20,40 Q25,20 50,20 Q70,5 90,20 Q110,5 130,20 Q155,15 165,35 Q185,35 190,55 Q200,75 180,80 Z" fill="{{ $shape['color'] }}"/>
+                    </svg>
+                @elseif($shape['type'] === 'arch')
+                    {{-- Lengkungan dekoratif --}}
+                    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                        <path d="M0,200 Q0,0 200,0 L200,30 Q30,30 30,200 Z" fill="{{ $shape['color'] }}"/>
+                    </svg>
+                @elseif($shape['type'] === 'ribbon')
+                    {{-- Pita merah putih kemerdekaan --}}
+                    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                        <path d="M0,0 L200,0 L200,40 L0,40 Z" fill="{{ $shape['color'] }}"/>
+                        <path d="M0,40 L200,40 L200,80 L0,80 Z" fill="rgba(255,255,255,0.6)"/>
+                    </svg>
+                @elseif($shape['type'] === 'pattern-islamic')
+                    {{-- Pattern Geometris Islami untuk Background --}}
+                    <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <pattern id="islamicPattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+                                <path d="M50 0 L100 50 L50 100 L0 50 Z" fill="none" stroke="{{ $shape['color'] }}" stroke-width="0.5"/>
+                                <circle cx="50" cy="50" r="10" fill="none" stroke="{{ $shape['color'] }}" stroke-width="0.5"/>
+                            </pattern>
+                        </defs>
+                        <rect width="100%" height="100%" fill="url(#islamicPattern)" />
+                    </svg>
+                @elseif($shape['type'] === 'corner-oriental')
+                    {{-- Sudut Khas Imlek --}}
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10,40 L10,10 L40,10 M20,10 L20,20 L10,20" fill="none" stroke="{{ $shape['color'] }}" stroke-width="4"/>
+                    </svg>
+                @elseif($shape['type'] === 'pine-branch')
+                    {{-- Ornamen Ranting Pinus Natal --}}
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10,10 Q50,20 90,10 M30,15 L25,30 M50,18 L50,35 M70,15 L75,30" stroke="{{ $shape['color'] }}" stroke-width="2" fill="none" stroke-linecap="round"/>
+                    </svg>
+                @endif
             </div>
+        @endforeach
+    @endif
+
+    {{-- Content --}}
+    <div class="container text-center position-relative" style="z-index:10;">
+
+        @if(!empty($theme['decoration']))
+            <div class="mb-3" style="font-size:2.5rem; line-height:1;">{{ $theme['decoration'] }}</div>
         @endif
 
-        <h1 class="display-3 fw-bold {{ $theme['text_class'] }} mb-4" style="text-shadow: 2px 2px 8px rgba(0,0,0,0.5); animation: fadeIn 1s;">
+        <h1 class="display-3 fw-bold mb-4"
+            style="color:{{ $theme['text_color'] }}; text-shadow:0 2px 12px rgba(0,0,0,0.12); animation:heroFadeUp 0.8s ease both;">
             {{ $heroTitle }}
-            @if($currentTheme !== 'default')
-                <br><span class="{{ $theme['accent_class'] }}">{{ ucwords(str_replace('-', ' ', $currentTheme)) }}</span>
-            @else
-                <br><span class="{{ $theme['accent_class'] }}"></span>
-            @endif
         </h1>
-        
-        <p class="fs-5 {{ $theme['accent_class'] }} mb-5 mx-auto" style="max-width: 700px; text-shadow: 1px 1px 4px rgba(0,0,0,0.5);">
+
+        <p class="fs-5 mb-5 mx-auto"
+           style="max-width:680px; color:{{ $theme['subtitle_color'] }}; animation:heroFadeUp 0.8s 0.15s ease both; opacity:0;">
             {{ $heroSubtitle }}
         </p>
-        
-        <div class="d-flex gap-3 justify-content-center flex-wrap">
-            <a href="{{ route('products.index') }}" class="btn btn-dark btn-md shadow-lg">
+
+        <div class="d-flex gap-3 justify-content-center flex-wrap"
+             style="animation:heroFadeUp 0.8s 0.3s ease both; opacity:0;">
+            <a href="{{ route('products.index') }}"
+               class="btn btn-md px-4 py-2 rounded-pill shadow"
+               style="{{ $theme['btn_primary'] }}">
                 Lihat Koleksi
             </a>
-            <a href="{{ route('contact') }}" class="btn {{ isset($theme['text_class']) && $theme['text_class'] == 'text-white' ? 'btn-outline-light' : 'btn-outline-dark' }} btn-md shadow-lg">
+            <a href="{{ route('contact') }}"
+               class="btn btn-md px-4 py-2 rounded-pill"
+               style="{{ $theme['btn_secondary'] }}">
                 Konsultasi Gratis
             </a>
         </div>
 
-        @if($currentTheme !== 'default')
-            <div class="mt-4">
-                <span class="badge bg-white bg-opacity-25 text-white fs-6 py-2 px-4 rounded-pill">
-                    🎉 Promo Spesial {{ ucwords(str_replace('-', ' ', $currentTheme)) }}!
+        @if($currentTheme !== 'default' && !empty($theme['promo_label']))
+            <div class="mt-4" style="animation:heroFadeUp 0.8s 0.45s ease both; opacity:0;">
+                <span class="badge fs-6 py-2 px-4 rounded-pill"
+                      style="background:{{ $theme['badge_bg'] }}; color:{{ $theme['badge_color'] }}; border:1px solid {{ $theme['badge_color'] }}40;">
+                    🎉 {{ $theme['promo_label'] }}
                 </span>
             </div>
         @endif
     </div>
 
-    <!-- Scroll Indicator -->
-    <div class="position-absolute bottom-0 start-50 translate-middle-x mb-4 animate__animated animate__bounce animate__infinite">
-        <i class="fas fa-chevron-down fs-2 {{ $theme['text_class'] }} opacity-50"></i>
+    {{-- Scroll indicator --}}
+    <div class="position-absolute bottom-0 start-50 translate-middle-x mb-4" style="z-index:10;">
+        <div class="hero-scroll-dot" style="color:{{ $theme['scroll_color'] }};">
+            <i class="fas fa-chevron-down fs-4 opacity-50"></i>
+        </div>
     </div>
 </section>
 
 <style>
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-            transform: translateY(-20px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
+@keyframes heroFadeUp {
+    from { opacity:0; transform:translateY(24px); }
+    to   { opacity:1; transform:translateY(0); }
+}
+.hero-scroll-dot {
+    animation: heroBounce 1.6s ease-in-out infinite;
+}
+@keyframes heroBounce {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(8px); }
+}
+.hero-deco {
+    animation: heroPulse 4s ease-in-out infinite;
+}
+.hero-deco:nth-child(even) {
+    animation-delay: 2s;
+}
+@keyframes heroPulse {
+    0%, 100% { transform: scale(1) rotate(0deg); }
+    50%       { transform: scale(1.06) rotate(3deg); }
+}
 </style>
 
 <!-- Featured Products -->

@@ -80,7 +80,7 @@
                 @forelse($recentProducts as $product)
                     <div class="d-flex align-items-center justify-content-between py-3 border-bottom">
                         <div class="d-flex align-items-center">
-                            <img src="{{ asset('storage/' . $product->image) }}" 
+                            <img src="{{ Storage::url($product->image) }}" 
                                  alt="{{ $product->name }}"
                                  class="rounded me-3" style="width: 48px; height: 48px; object-fit: cover;">
                             <div>
@@ -146,7 +146,7 @@
                         @forelse($promoProducts as $product)
                             <div class="d-flex align-items-center justify-content-between py-3 border-bottom">
                                 <div class="d-flex align-items-center">
-                                    <img src="{{ asset('storage/' . $product->image) }}" 
+                                    <img src="{{ Storage::url($product->image) }}" 
                                          alt="{{ $product->name }}"
                                          class="rounded me-3" style="width: 48px; height: 48px; object-fit: cover;">
                                     <div>

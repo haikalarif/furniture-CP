@@ -60,7 +60,7 @@
                             </span>
                         </td>
                         <td>
-                            <div class="d-flex gap-2">
+                            <div class="d-flex gap-1">
                                 <a href="{{ route('admin.testimonials.edit', $testimonial) }}" 
                                    class="btn btn-sm btn-outline-primary">
                                     <i class="fas fa-edit"></i>

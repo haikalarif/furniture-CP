@@ -9,7 +9,7 @@
         <h5 class="mb-0">Edit Testimoni: {{ $testimonial->client_name }}</h5>
     </div>
 
-    <form action="{{ route('admin.testimonials.update', $testimonial) }}" method="POST" enctype="multipart/form-data" class="card-body">
+    <form id="main-form" action="{{ route('admin.testimonials.update', $testimonial) }}" method="POST" enctype="multipart/form-data" class="card-body">
         @csrf
         @method('PUT')
 
@@ -97,10 +97,17 @@
                 Batal
             </a>
             <button type="submit" class="btn btn-sm btn-primary">
-                Update Testimoni
+                <i class="fas fa-save me-1"></i> Update
             </button>
         </div>
     </form>
+</div>
+
+<!-- Floating Save Button -->
+<div class="floating-save-btn">
+    <button type="submit" form="main-form" class="btn btn-sm btn-primary shadow" title="Update Testimoni">
+        <i class="fas fa-save me-1"></i> Update
+    </button>
 </div>
 
 @endsection

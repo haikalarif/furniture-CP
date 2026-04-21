@@ -67,7 +67,7 @@
                             <small class="text-muted">{{ $message->created_at->format('H:i') }}</small>
                         </td>
                         <td>
-                            <div class="d-flex gap-2">
+                            <div class="d-flex gap-1">
                                 <a href="{{ route('admin.contact-messages.show', $message) }}" 
                                    class="btn btn-sm btn-outline-primary"
                                    title="Lihat Detail">

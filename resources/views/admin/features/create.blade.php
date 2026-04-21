@@ -9,7 +9,7 @@
         <h5 class="mb-0">Tambah Keunggulan Baru</h5>
     </div>
 
-    <form action="{{ route('admin.features.store') }}" method="POST" class="card-body">
+    <form id="main-form" action="{{ route('admin.features.store') }}" method="POST" class="card-body">
         @csrf
 
         <div class="row g-3">
@@ -60,12 +60,13 @@
                 Batal
             </a>
             <button type="submit" class="btn btn-sm btn-primary">
-                Simpan Keunggulan
+                <i class="fas fa-save me-1"></i> Simpan
             </button>
         </div>
     </form>
 </div>
 
+<!-- Referensi Icon -->
 <div class="card shadow-sm mt-3">
     <div class="card-header bg-white">
         <h6 class="mb-0">Referensi Icon Font Awesome</h6>
@@ -127,6 +128,13 @@
             </a>
         </div>
     </div>
+</div>
+
+<!-- Floating Save Button -->
+<div class="floating-save-btn">
+    <button type="submit" form="main-form" class="btn btn-sm btn-primary shadow" title="Simpan Keunggulan">
+        <i class="fas fa-save me-1"></i> Simpan
+    </button>
 </div>
 
 @endsection

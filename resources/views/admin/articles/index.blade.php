@@ -51,7 +51,7 @@
                         <td class="d-none d-lg-table-cell">{{ $article->views }}</td>
                         <td class="d-none d-md-table-cell">{{ $article->created_at->format('d M Y') }}</td>
                         <td>
-                            <div class="d-flex gap-2">
+                            <div class="d-flex gap-1">
                                 <a href="{{ route('admin.articles.edit', $article) }}" 
                                    class="btn btn-sm btn-outline-primary">
                                     <i class="fas fa-edit"></i>

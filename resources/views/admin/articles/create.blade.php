@@ -9,7 +9,7 @@
         <h5 class="mb-0">Tambah Artikel Baru</h5>
     </div>
 
-    <form action="{{ route('admin.articles.store') }}" method="POST" enctype="multipart/form-data" class="card-body">
+    <form id="main-form" action="{{ route('admin.articles.store') }}" method="POST" enctype="multipart/form-data" class="card-body">
         @csrf
 
         <div class="row g-3">
@@ -73,10 +73,17 @@
                 Batal
             </a>
             <button type="submit" class="btn btn-sm btn-primary">
-                Simpan Artikel
+                <i class="fas fa-save me-1"></i> Simpan
             </button>
         </div>
     </form>
+</div>
+
+<!-- Floating Save Button -->
+<div class="floating-save-btn">
+    <button type="submit" form="main-form" class="btn btn-sm btn-primary shadow" title="Simpan Artikel">
+        <i class="fas fa-save me-1"></i> Simpan
+    </button>
 </div>
 
 @endsection

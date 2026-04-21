@@ -10,7 +10,7 @@
         <p class="mb-0 small text-muted">Key: <code>{{ $page->key }}</code></p>
     </div>
 
-    <form action="{{ route('admin.pages.update', $page) }}" method="POST" enctype="multipart/form-data" class="card-body">
+    <form id="main-form" action="{{ route('admin.pages.update', $page) }}" method="POST" enctype="multipart/form-data" class="card-body">
         @csrf
         @method('PUT')
 
@@ -174,6 +174,13 @@
             </button>
         </div>
     </form>
+</div>
+
+<!-- Floating Save Button -->
+<div class="floating-save-btn">
+    <button type="submit" form="main-form" class="btn btn-sm btn-primary shadow" title="Update Halaman">
+        <i class="fas fa-save me-1"></i> Update
+    </button>
 </div>
 
 <div class="card shadow-sm mt-4">

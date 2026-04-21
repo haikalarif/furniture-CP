@@ -9,7 +9,7 @@
         <h5 class="mb-0">Edit Produk: {{ $product->name }}</h5>
     </div>
 
-    <form action="{{ route('admin.products.update', $product) }}" method="POST" enctype="multipart/form-data" class="card-body">
+    <form id="main-form" action="{{ route('admin.products.update', $product) }}" method="POST" enctype="multipart/form-data" class="card-body">
         @csrf
         @method('PUT')
 
@@ -61,11 +61,17 @@
 
             <div class="col-md-6">
                 <label class="form-label">Harga</label>
-                <input type="number" name="price" value="{{ old('price', $product->price) }}" 
-                       class="form-control @error('price') is-invalid @enderror"
-                       id="price">
+                <div class="input-group">
+                    <span class="input-group-text">Rp</span>
+                    <input type="text" id="price_display"
+                           value="{{ old('price', $product->price) ? number_format(old('price', $product->price), 0, ',', '.') : '' }}"
+                           class="form-control @error('price') is-invalid @enderror"
+                           placeholder="0"
+                           autocomplete="off">
+                    <input type="hidden" name="price" id="price" value="{{ old('price', $product->price) }}">
+                </div>
                 @error('price')
-                    <div class="invalid-feedback">{{ $message }}</div>
+                    <div class="invalid-feedback d-block">{{ $message }}</div>
                 @enderror
             </div>
 
@@ -145,10 +151,47 @@
                 Batal
             </a>
             <button type="submit" class="btn btn-sm btn-primary">
-                Update Produk
+                <i class="fas fa-save me-1"></i> Update
             </button>
         </div>
     </form>
 </div>
 
+<!-- Floating Save Button -->
+<div class="floating-save-btn">
+    <button type="submit" form="main-form" class="btn btn-sm btn-primary shadow" title="Update Produk">
+        <i class="fas fa-save me-1"></i> Update
+    </button>
+</div>
+
 @endsection
+
+@push('scripts')
+<script>
+(function () {
+    const display = document.getElementById('price_display');
+    const hidden  = document.getElementById('price');
+
+    function toRaw(val) {
+        return val.replace(/\./g, '').replace(/,/g, '');
+    }
+
+    function format(val) {
+        const num = parseInt(toRaw(val), 10);
+        if (isNaN(num)) return '';
+        return num.toLocaleString('id-ID');
+    }
+
+    display.addEventListener('input', function () {
+        const raw = toRaw(this.value);
+        hidden.value = raw || '';
+        const formatted = raw ? parseInt(raw, 10).toLocaleString('id-ID') : '';
+        this.value = formatted;
+    });
+
+    display.addEventListener('blur', function () {
+        this.value = format(this.value);
+    });
+})();
+</script>
+@endpush
